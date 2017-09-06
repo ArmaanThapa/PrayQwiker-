@@ -1,0 +1,10 @@
+<html>
+<head></head>
+<body>
+<p>Thank You ! for Shoping with QwikerPay</p>
+<p>Your OrderId :${newMessagae.orderId}</p>
+<p>Your Transaction Id :  ${newMessage.transactionId}</p>
+<p> For any enquiry contact at 1112221</p>
+
+</body>
+</html>

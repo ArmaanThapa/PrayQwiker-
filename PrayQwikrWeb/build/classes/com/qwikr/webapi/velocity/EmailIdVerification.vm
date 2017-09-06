@@ -1,0 +1,7 @@
+<html>
+<body>
+
+click link for email verification: <a href="/emailverification/${newMessage.verificationcode}">
+
+</body>
+</html>

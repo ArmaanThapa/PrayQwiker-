@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		
+
+		<mapping class="com.qwikr.webapi.domain.Product" />
+		<mapping class="com.qwikr.webapi.domain.Cart" />
+		<mapping class="com.qwikr.webapi.domain.Orderdetail" />
+		<mapping class="com.qwikr.webapi.domain.Delivery" />
+		<mapping class="com.qwikr.webapi.domain.Admin" />
+		<mapping class="com.qwikr.webapi.domain.User" />
+		<mapping class="com.qwikr.webapi.domain.LoginDomain" />
+		<mapping class="com.qwikr.webapi.domain.ProductCategory" />
+		<mapping class="com.qwikr.webapi.domain.Brand" />
+		<mapping class="com.qwikr.webapi.domain.ProductSubcategory" />
+		
+	</session-factory>
+</hibernate-configuration>

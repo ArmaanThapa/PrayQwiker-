@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+<bean class="com.qwikr.webapi.controller.MainController">
+	<constructor-arg ref="adminuserservice" />
+	<constructor-arg ref="brandservice" />
+	<constructor-arg ref="subcategoryservice" />
+	<constructor-arg ref="productService" />
+	<constructor-arg ref="cartService" />
+	<constructor-arg ref="userService" />
+	<constructor-arg ref="deliveryService" />
+	<constructor-arg ref="loginService" />
+	<constructor-arg ref="orderdetailService" />
+	<constructor-arg ref="categoryService" />
+	<constructor-arg ref="velocityEngine" />
+</bean>
+
+</beans>

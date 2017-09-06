@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/springsecurity-3.1.xsd
+http://www.springframework.org/schema/beans http:
+//www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/springcontext-3.2.xsd">
+
+	<!-- We will define all security related configurations in this file -->
+
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/addProduct"
+			access="ROLE_ADMIN" />
+		<security:form-login login-page="/adminhome"
+			default-target-url="/addProduct" authentication-failure-url="/loginfailed" />
+		<security:logout logout-success-url="/adminlogout" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="prayqwik@gmail.com" password="prayqwik@123"
+					authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<!-- Password Encoding -->
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="bcrypt" />
+		</authentication-provider>
+	</authentication-manager>
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder ref="encoder" />
+		</authentication-provider>
+	</authentication-manager>
+
+	<bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg name="strength" value="10" />
+
+		<bean id="authProvider"
+			class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+			<property name="userService" ref="customUserService"/>
+			<property name="passwordEncoder" ref="encoder" />
+		</bean>
+
+		<bean id="encoder"
+			class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	</bean>
+	<!-- End Password ENcoding -->
+	<!-- Security Files -->
+	<global-method-security jsr250-annotations="enabled" />
+	<http pattern="/**/*.css" security="none" />
+	<http pattern="/**/*.gif" security="none" />
+	<http pattern="/**/*.html" security="none" />
+	<http pattern="/**/*.ttf" security="none" />
+	<http pattern="/**/*.svg" security="none" />
+	<http pattern="/**/*.ico" security="none" />
+	<http pattern="/**/*.jpg" security="none" />
+	<http pattern="/**/*.js" security="none" />
+	<http pattern="/**/*.png" security="none" />
+	<http pattern="/**/*.xml" security="none" />
+	<http pattern="/**/*.mp4" security="none" />
+
+	<!-- End Of Security Files -->
+</beans>
